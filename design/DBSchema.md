@@ -13,7 +13,7 @@
 | 字段  | 类型  | 约束  |  说明 |
 |---|---|---|---|
 | address_id  | int  | 主键 自增 | Id  |
-| customer_id | int  | 非空，外键 | 客户Id  |
+| customer_id | int  | 非空，索引，外键 | 客户Id  |
 | receiver_name  | varchar(20)  | 非空 | 收货人  |
 | content  | varchar(200)  | 非空 | 地址内容  |
 | tag  | varchar(20)  | 非空  | 标签  |
@@ -43,7 +43,7 @@
 | product_code | varchar(50)  | 非空，唯一索引 | 商品代码  |
 | product_name | varchar(100)  | 非空 | 商品名称  |
 | price  | double  | 非空 | 价格  |
-| discount  | float  |  | 打折（0.01-0.99）  |
+| discount  | double  |  | 打折（0.01-0.99）  |
 | quantity  | int  | 非空，默认0  | 库存数量  |
 | status  | tinyint  | 非空 | 状态（0下架、1上架、2待审核）  |
 | main_pic_url | varchar(100)  | 非空 | 主图  |
@@ -99,7 +99,7 @@
 # Return
 | 字段  | 类型  | 约束  |  说明 |
 |---|---|---|---|
-| return_id  | int  | 主键、自增 | Id  |
+| return_id  | int  | 主键 自增 | Id  |
 | order_id | bigint  | 非空、索引、外键 | 订单Id  |
 | order_time | datetime  |  | 订单时间  |
 | customer_name  | varchar(20)  | 非空 | 退货人  |
@@ -113,7 +113,7 @@
 | reason  | tinyint  | 非空 | 退货原因  |
 | opened  | bit  | 非空 | 是否开封  |
 | comment  | varchar(300)  |  | 备注  |
-| create_time  | datetime  | 非空 | 创建时间  |
+| create_time  | datetime  | 非空，索引 | 创建时间  |
 | update_time  | datetime  | 非空 | 修改时间  |
 
 # ReturnHistory
