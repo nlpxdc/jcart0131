@@ -88,7 +88,7 @@ RequestBody:
 ```
 
 ResponseBody:  
-```json
+```
 123456
 
 ```
