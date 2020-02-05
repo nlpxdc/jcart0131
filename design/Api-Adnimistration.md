@@ -38,13 +38,13 @@ ResponseBody:
             "administratorId": 1234,
             "username": "user01",
             "status": 1,
-            "createTime": 1580784600372
+            "createTimestamp": 1580784600372
         },
         {
             "administratorId": 1235,
             "username": "user02",
             "status": 0,
-            "createTime": 1580784711504
+            "createTimestamp": 1580784711504
         }
     ]
 }
