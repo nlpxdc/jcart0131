@@ -20,6 +20,7 @@ CREATE TABLE `jcart_address` (
     `address_id` int NOT NULL auto_increment,
     `customer_id` int not null,
     `receiver_name` varchar(20) not null,
+    `receiver_mobile` varchar(20) not null,
     `content` varchar(200) not null,
     `tag` varchar(20) not null,
     PRIMARY KEY (`address_id`),

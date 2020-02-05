@@ -15,6 +15,7 @@
 | address_id  | int  | 主键 自增 | Id  |
 | customer_id | int  | 非空，索引，外键 | 客户Id  |
 | receiver_name  | varchar(20)  | 非空 | 收货人  |
+| receiver_mobile  | varchar(20)  | 非空 | 收货人手机  |
 | content  | varchar(200)  | 非空 | 地址内容  |
 | tag  | varchar(20)  | 非空  | 标签  |
 
