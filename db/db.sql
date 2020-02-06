@@ -54,6 +54,7 @@ CREATE TABLE `jcart_product` (
     `product_id` int NOT NULL auto_increment,
     `product_code` varchar(50) not null,
     `product_name` varchar(100) not null,
+    `product_abstract` varchar(300) not null,
     `price` double not null,
     `discount` double,
     `quantity` int not null,

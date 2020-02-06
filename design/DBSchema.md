@@ -43,6 +43,7 @@
 | product_id  | int  | 主键 自增 | Id  |
 | product_code | varchar(50)  | 非空，唯一索引 | 商品代码  |
 | product_name | varchar(100)  | 非空 | 商品名称  |
+| product_abstract | varchar(300)  | 非空 | 摘要  |
 | price  | double  | 非空 | 价格  |
 | discount  | double  |  | 打折（0.01-0.99）  |
 | quantity  | int  | 非空，默认0  | 库存数量  |
