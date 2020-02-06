@@ -1,8 +1,6 @@
 package io.cjf.jcartadministrationback.controller;
 
-import io.cjf.jcartadministrationback.dto.out.OrderListOutDTO;
-import io.cjf.jcartadministrationback.dto.out.OrderShowOutDTO;
-import io.cjf.jcartadministrationback.dto.out.PageOutDTO;
+import io.cjf.jcartadministrationback.dto.out.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,5 +26,13 @@ public class OrderController {
         return null;
     }
 
-    public
+    @GetMapping("/getInvoiceByOrderId")
+    public OrderInvoiceOutDTO getInvoiceByOrderId(@RequestParam Long orderId){
+        return null;
+    }
+
+    @GetMapping("/getShipByOrderId")
+    public OrderShipOutDTO getShipByOrderId(@RequestParam Long orderId){
+        return null;
+    }
 }
