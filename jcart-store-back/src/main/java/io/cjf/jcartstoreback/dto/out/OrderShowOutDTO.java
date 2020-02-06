@@ -5,8 +5,8 @@ import java.util.List;
 public class OrderShowOutDTO {
     private Integer orderId;
     private Long createTimestamp;
-    private Integer payMethod;
-    private Integer shipMethod;
+    private Short payMethod;
+    private Short shipMethod;
     private Double shipPrice;
     private String payAddress;
     private String shipAddress;
@@ -31,19 +31,19 @@ public class OrderShowOutDTO {
         this.createTimestamp = createTimestamp;
     }
 
-    public Integer getPayMethod() {
+    public Short getPayMethod() {
         return payMethod;
     }
 
-    public void setPayMethod(Integer payMethod) {
+    public void setPayMethod(Short payMethod) {
         this.payMethod = payMethod;
     }
 
-    public Integer getShipMethod() {
+    public Short getShipMethod() {
         return shipMethod;
     }
 
-    public void setShipMethod(Integer shipMethod) {
+    public void setShipMethod(Short shipMethod) {
         this.shipMethod = shipMethod;
     }
 
