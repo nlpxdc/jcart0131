@@ -104,6 +104,7 @@
 | return_id  | int  | 主键 自增 | Id  |
 | order_id | bigint  | 非空、索引、外键 | 订单Id  |
 | order_time | datetime  |  | 订单时间  |
+| customer_id  | int  | 非空 | 下单客户Id  |
 | customer_name  | varchar(20)  | 非空 | 退货人  |
 | mobile  | varchar(20)  | 非空 | 手机  |
 | email  | varchar(100)  | 非空  | 邮箱  |

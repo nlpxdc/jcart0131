@@ -118,6 +118,7 @@ CREATE TABLE `jcart_return` (
     `return_id` int NOT NULL auto_increment,
     `order_id` bigint not null,
     `order_time` datetime,
+    `customer_id` int not null,
     `customer_name` varchar(20) not null,
     `mobile` varchar(20) not null,
     `email` varchar(100) not null,
