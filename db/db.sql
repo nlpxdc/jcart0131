@@ -131,7 +131,7 @@ CREATE TABLE `jcart_return` (
     `opened` bit not null,
     `comment` varchar(300),
     `create_time` datetime not null,
-    `update_time` datetime not null
+    `update_time` datetime not null,
     PRIMARY KEY (`return_id`),
     index `idx_order_id` (`order_id`),
     index `idx_create_time` (`create_time`)
