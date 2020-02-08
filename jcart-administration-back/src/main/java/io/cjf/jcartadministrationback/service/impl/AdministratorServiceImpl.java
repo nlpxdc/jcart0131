@@ -23,4 +23,9 @@ public class AdministratorServiceImpl implements AdministratorService {
         Administrator administrator = administratorMapper.selectByUsername(username);
         return administrator;
     }
+
+    @Override
+    public void updateById(Administrator administrator) {
+        administratorMapper.updateByPrimaryKey(administrator);
+    }
 }

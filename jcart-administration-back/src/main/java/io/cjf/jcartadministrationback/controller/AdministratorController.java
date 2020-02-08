@@ -57,7 +57,17 @@ public class AdministratorController {
 
     @PostMapping("/updateProfile")
     public void updateProfile(@RequestBody AdministratorUpdateProfileInDTO administratorUpdateProfileInDTO) {
-
+        Integer administratorId = administratorUpdateProfileInDTO.getAdministratorId();
+        Administrator administrator = administratorService.getById(administratorId);
+        administrator.setRealName(administratorUpdateProfileInDTO.getRealName());
+        administrator.setEmail(administratorUpdateProfileInDTO.getEmail());
+        administrator.setAvatarUrl(administratorUpdateProfileInDTO.getAvatarUrl());
+        String password = administratorUpdateProfileInDTO.getPassword();
+        if (password != null && !password.isEmpty()){
+            String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
+            administrator.setEncryptedPassword(bcryptHashString);
+        }
+        administratorService.updateById(administrator);
     }
 
     @GetMapping("/getList")
