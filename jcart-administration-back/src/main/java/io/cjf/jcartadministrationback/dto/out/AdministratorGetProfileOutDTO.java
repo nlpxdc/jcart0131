@@ -4,7 +4,6 @@ public class AdministratorGetProfileOutDTO {
     private Integer administratorId;
     private String username;
     private String realName;
-    private String mobile;
     private String email;
     private String avatarUrl;
 
@@ -22,14 +21,6 @@ public class AdministratorGetProfileOutDTO {
 
     public void setRealName(String realName) {
         this.realName = realName;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
     }
 
     public String getEmail() {

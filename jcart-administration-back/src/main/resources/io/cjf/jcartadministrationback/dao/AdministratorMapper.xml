@@ -5,13 +5,15 @@
     <id column="administrator_id" jdbcType="INTEGER" property="administratorId" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="real_name" jdbcType="VARCHAR" property="realName" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="encrypted_password" jdbcType="VARCHAR" property="encryptedPassword" />
     <result column="status" jdbcType="TINYINT" property="status" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="avatar_url" jdbcType="VARCHAR" property="avatarUrl" />
   </resultMap>
   <sql id="Base_Column_List">
-    administrator_id, username, real_name, encrypted_password, status, create_time, avatar_url
+    administrator_id, username, real_name, email, encrypted_password, status, create_time, 
+    avatar_url
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -25,11 +27,11 @@
   </delete>
   <insert id="insert" parameterType="io.cjf.jcartadministrationback.po.Administrator">
     insert into jcart_administrator (administrator_id, username, real_name, 
-      encrypted_password, status, create_time, 
-      avatar_url)
+      email, encrypted_password, status, 
+      create_time, avatar_url)
     values (#{administratorId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
-      #{encryptedPassword,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{avatarUrl,jdbcType=VARCHAR})
+      #{email,jdbcType=VARCHAR}, #{encryptedPassword,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{avatarUrl,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="io.cjf.jcartadministrationback.po.Administrator">
     insert into jcart_administrator
@@ -42,6 +44,9 @@
       </if>
       <if test="realName != null">
         real_name,
+      </if>
+      <if test="email != null">
+        email,
       </if>
       <if test="encryptedPassword != null">
         encrypted_password,
@@ -66,6 +71,9 @@
       <if test="realName != null">
         #{realName,jdbcType=VARCHAR},
       </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
       <if test="encryptedPassword != null">
         #{encryptedPassword,jdbcType=VARCHAR},
       </if>
@@ -89,6 +97,9 @@
       <if test="realName != null">
         real_name = #{realName,jdbcType=VARCHAR},
       </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
       <if test="encryptedPassword != null">
         encrypted_password = #{encryptedPassword,jdbcType=VARCHAR},
       </if>
@@ -108,6 +119,7 @@
     update jcart_administrator
     set username = #{username,jdbcType=VARCHAR},
       real_name = #{realName,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
       encrypted_password = #{encryptedPassword,jdbcType=VARCHAR},
       status = #{status,jdbcType=TINYINT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -116,6 +128,7 @@
   </update>
 
 <!--  custom-->
+
   <select id="selectByUsername" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />

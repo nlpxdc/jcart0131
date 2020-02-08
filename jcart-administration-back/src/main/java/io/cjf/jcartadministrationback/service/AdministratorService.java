@@ -4,6 +4,8 @@ import io.cjf.jcartadministrationback.po.Administrator;
 
 public interface AdministratorService {
 
-    Administrator selectByUsername(String username);
+    Administrator getById(Integer administratorId);
+
+    Administrator getByUsername(String username);
 
 }

@@ -9,6 +9,8 @@ public class Administrator {
 
     private String realName;
 
+    private String email;
+
     private String encryptedPassword;
 
     private Byte status;
@@ -39,6 +41,14 @@ public class Administrator {
 
     public void setRealName(String realName) {
         this.realName = realName == null ? null : realName.trim();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
     }
 
     public String getEncryptedPassword() {

@@ -27,7 +27,7 @@ public class AdministratorController {
     @GetMapping("/login")
     public AdministratorLoginOutDTO login(@RequestParam String username,
                                           @RequestParam String password) throws ClientException {
-        Administrator administrator = administratorService.selectByUsername(username);
+        Administrator administrator = administratorService.getByUsername(username);
         if (administrator == null){
             throw new ClientException(ClientExceptionConstant.ADMINISTRATOR_USERNAME_NOT_EXIST_ERRCODE, ClientExceptionConstant.ADMINISTRATOR_USERNAME_NOT_EXIST_ERRMSG);
         }
@@ -43,8 +43,16 @@ public class AdministratorController {
     }
 
     @GetMapping("/getProfile")
-    public AdministratorGetProfileOutDTO getProfile(Integer administratorId) {
-        return null;
+    public AdministratorGetProfileOutDTO getProfile(@RequestAttribute Integer administratorId) {
+        Administrator administrator = administratorService.getById(administratorId);
+
+        AdministratorGetProfileOutDTO administratorGetProfileOutDTO = new AdministratorGetProfileOutDTO();
+        administratorGetProfileOutDTO.setAdministratorId(administratorId);
+        administratorGetProfileOutDTO.setUsername(administrator.getUsername());
+        administratorGetProfileOutDTO.setRealName(administrator.getRealName());
+        administratorGetProfileOutDTO.setEmail(administrator.getEmail());
+        administratorGetProfileOutDTO.setAvatarUrl(administrator.getAvatarUrl());
+        return administratorGetProfileOutDTO;
     }
 
     @PostMapping("/updateProfile")
@@ -77,13 +85,4 @@ public class AdministratorController {
 
     }
 
-    @GetMapping("/sendPasswordResetCodeToMobile")
-    public void sendPasswordResetCodeToMobile(@RequestParam String mobile) {
-
-    }
-
-    @PostMapping("/resetPasswordByMobile")
-    public void resetPasswordByMobile(@RequestBody AdministratorResetPwdMobileInDTO administratorResetPwdMobileInDTO) {
-
-    }
 }
