@@ -1,5 +1,7 @@
 package io.cjf.jcartadministrationback.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import io.cjf.jcartadministrationback.dao.AdministratorMapper;
 import io.cjf.jcartadministrationback.po.Administrator;
 import io.cjf.jcartadministrationback.service.AdministratorService;
@@ -27,5 +29,12 @@ public class AdministratorServiceImpl implements AdministratorService {
     @Override
     public void updateById(Administrator administrator) {
         administratorMapper.updateByPrimaryKey(administrator);
+    }
+
+    @Override
+    public Page<Administrator> getWithPage(Integer pageNum) {
+        PageHelper.startPage(pageNum, 10);
+        Page<Administrator> administratorsPage = administratorMapper.selectWithPage();
+        return administratorsPage;
     }
 }

@@ -1,5 +1,6 @@
 package io.cjf.jcartadministrationback.dao;
 
+import com.github.pagehelper.Page;
 import io.cjf.jcartadministrationback.po.Administrator;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -21,4 +22,7 @@ public interface AdministratorMapper {
 //    custom
 
     Administrator selectByUsername(@Param("username") String username);
+
+    Page<Administrator> selectWithPage();
+
 }

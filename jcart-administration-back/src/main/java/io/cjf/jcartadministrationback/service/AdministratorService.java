@@ -1,5 +1,6 @@
 package io.cjf.jcartadministrationback.service;
 
+import com.github.pagehelper.Page;
 import io.cjf.jcartadministrationback.po.Administrator;
 
 public interface AdministratorService {
@@ -9,5 +10,7 @@ public interface AdministratorService {
     Administrator getByUsername(String username);
 
     void updateById(Administrator administrator);
+
+    Page<Administrator> getWithPage(Integer pageNum);
 
 }
