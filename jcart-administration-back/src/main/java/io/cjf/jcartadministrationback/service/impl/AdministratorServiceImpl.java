@@ -32,9 +32,21 @@ public class AdministratorServiceImpl implements AdministratorService {
     }
 
     @Override
+    public void updateByIdSelective(Administrator administrator) {
+        administratorMapper.updateByPrimaryKeySelective(administrator);
+    }
+
+    @Override
     public Page<Administrator> getWithPage(Integer pageNum) {
         PageHelper.startPage(pageNum, 10);
         Page<Administrator> administratorsPage = administratorMapper.selectWithPage();
         return administratorsPage;
+    }
+
+    @Override
+    public Integer create(Administrator administrator) {
+        administratorMapper.insert(administrator);
+        Integer administratorId = administrator.getAdministratorId();
+        return administratorId;
     }
 }

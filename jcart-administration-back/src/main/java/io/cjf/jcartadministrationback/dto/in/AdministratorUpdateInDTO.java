@@ -1,9 +1,8 @@
 package io.cjf.jcartadministrationback.dto.in;
 
 public class AdministratorUpdateInDTO {
-    private String administratorId;
+    private Integer administratorId;
     private String realName;
-    private String mobile;
     private String email;
     private String avatarUrl;
     private String password;
@@ -15,14 +14,6 @@ public class AdministratorUpdateInDTO {
 
     public void setRealName(String realName) {
         this.realName = realName;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
     }
 
     public String getEmail() {
@@ -57,11 +48,11 @@ public class AdministratorUpdateInDTO {
         this.status = status;
     }
 
-    public String getAdministratorId() {
+    public Integer getAdministratorId() {
         return administratorId;
     }
 
-    public void setAdministratorId(String administratorId) {
+    public void setAdministratorId(Integer administratorId) {
         this.administratorId = administratorId;
     }
 }

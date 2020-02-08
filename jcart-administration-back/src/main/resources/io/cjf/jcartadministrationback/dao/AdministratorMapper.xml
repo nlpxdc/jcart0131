@@ -25,11 +25,11 @@
     delete from jcart_administrator
     where administrator_id = #{administratorId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="io.cjf.jcartadministrationback.po.Administrator">
-    insert into jcart_administrator (administrator_id, username, real_name, 
+  <insert id="insert" parameterType="io.cjf.jcartadministrationback.po.Administrator" useGeneratedKeys="true" keyProperty="administratorId">
+    insert into jcart_administrator (username, real_name,
       email, encrypted_password, status, 
       create_time, avatar_url)
-    values (#{administratorId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, 
+    values (#{username,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR},
       #{email,jdbcType=VARCHAR}, #{encryptedPassword,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
       #{createTime,jdbcType=TIMESTAMP}, #{avatarUrl,jdbcType=VARCHAR})
   </insert>

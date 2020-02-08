@@ -11,6 +11,10 @@ public interface AdministratorService {
 
     void updateById(Administrator administrator);
 
+    void updateByIdSelective(Administrator administrator);
+
     Page<Administrator> getWithPage(Integer pageNum);
+
+    Integer create(Administrator administrator);
 
 }

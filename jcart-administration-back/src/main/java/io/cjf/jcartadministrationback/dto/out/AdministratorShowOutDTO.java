@@ -1,12 +1,20 @@
-package io.cjf.jcartadministrationback.dto.in;
+package io.cjf.jcartadministrationback.dto.out;
 
-public class AdministratorCreateInDTO {
+public class AdministratorShowOutDTO {
+    private Integer administratorId;
     private String username;
     private String realName;
     private String email;
     private String avatarUrl;
-    private String password;
     private Byte status;
+
+    public Integer getAdministratorId() {
+        return administratorId;
+    }
+
+    public void setAdministratorId(Integer administratorId) {
+        this.administratorId = administratorId;
+    }
 
     public String getUsername() {
         return username;
@@ -38,14 +46,6 @@ public class AdministratorCreateInDTO {
 
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public Byte getStatus() {
