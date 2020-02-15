@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import io.cjf.jcartadministrationback.dao.ProductDetailMapper;
 import io.cjf.jcartadministrationback.dao.ProductMapper;
 import io.cjf.jcartadministrationback.dto.in.ProductCreateInDTO;
+import io.cjf.jcartadministrationback.dto.in.ProductUpdateInDTO;
 import io.cjf.jcartadministrationback.po.Product;
 import io.cjf.jcartadministrationback.po.ProductDetail;
 import io.cjf.jcartadministrationback.service.ProductService;
@@ -27,6 +28,7 @@ public class ProductServiceImpl implements ProductService {
         Product product = new Product();
         product.setProductCode(productCreateInDTO.getProductCode());
         product.setProductName(productCreateInDTO.getProductName());
+        product.setProductAbstract(productCreateInDTO.getDescription().substring(0, 100));
         product.setPrice(productCreateInDTO.getPrice());
         product.setDiscount(productCreateInDTO.getDiscount());
         product.setQuantity(productCreateInDTO.getQuantity());
@@ -43,5 +45,27 @@ public class ProductServiceImpl implements ProductService {
         productDetailMapper.insertSelective(productDetail);
 
         return productId;
+    }
+
+    @Override
+    public void update(ProductUpdateInDTO productUpdateInDTO) {
+        Product product = new Product();
+        product.setProductId(productUpdateInDTO.getProductId());
+        product.setProductCode(productUpdateInDTO.getProductCode());
+        product.setProductName(productUpdateInDTO.getProductName());
+        product.setProductAbstract(productUpdateInDTO.getDescription().substring(0, 100));
+        product.setPrice(productUpdateInDTO.getPrice());
+        product.setDiscount(productUpdateInDTO.getDiscount());
+        product.setQuantity(productUpdateInDTO.getQuantity());
+        product.setStatus(productUpdateInDTO.getStatus());
+        product.setMainPicUrl(productUpdateInDTO.getMainPicUrl());
+        product.setRewordPoints(productUpdateInDTO.getRewordPoints());
+        productMapper.updateByPrimaryKeySelective(product);
+
+        ProductDetail productDetail = new ProductDetail();
+        productDetail.setProductId(productUpdateInDTO.getProductId());
+        productDetail.setDescription(productUpdateInDTO.getDescription());
+        productDetail.setOtherPicUrls(JSON.toJSONString(productUpdateInDTO.getOtherPicUrls()));
+        productDetailMapper.updateByPrimaryKeySelective(productDetail);
     }
 }
