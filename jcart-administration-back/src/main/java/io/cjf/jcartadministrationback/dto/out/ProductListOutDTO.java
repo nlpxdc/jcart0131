@@ -7,6 +7,7 @@ public class ProductListOutDTO {
     private Double price;
     private Double discount;
     private Integer quantity;
+    private String mainPicUrl;
     private Byte status;
 
     public Integer getProductId() {
@@ -63,5 +64,13 @@ public class ProductListOutDTO {
 
     public void setStatus(Byte status) {
         this.status = status;
+    }
+
+    public String getMainPicUrl() {
+        return mainPicUrl;
+    }
+
+    public void setMainPicUrl(String mainPicUrl) {
+        this.mainPicUrl = mainPicUrl;
     }
 }

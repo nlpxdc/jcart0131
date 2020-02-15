@@ -1,5 +1,6 @@
 package io.cjf.jcartadministrationback.controller;
 
+import com.github.pagehelper.Page;
 import io.cjf.jcartadministrationback.dto.in.ProductCreateInDTO;
 import io.cjf.jcartadministrationback.dto.in.ProductUpdateInDTO;
 import io.cjf.jcartadministrationback.dto.out.PageOutDTO;
@@ -23,7 +24,13 @@ public class ProductController {
                                                 @RequestParam(required = false) Integer quantity,
                                                 @RequestParam(required = false) Byte status,
                                                 @RequestParam(required = false, defaultValue = "1") Integer pageNum){
-        return null;
+        Page<ProductListOutDTO> page = productService.search(pageNum);
+        PageOutDTO<ProductListOutDTO> pageOutDTO = new PageOutDTO<>();
+        pageOutDTO.setList(page);
+        pageOutDTO.setTotal(page.getTotal());
+        pageOutDTO.setPageSize(page.getPageSize());
+        pageOutDTO.setPageNum(page.getPageNum());
+        return pageOutDTO;
     }
 
     @PostMapping("/create")
