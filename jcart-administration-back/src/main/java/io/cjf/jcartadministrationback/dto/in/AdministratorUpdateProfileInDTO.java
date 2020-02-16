@@ -1,19 +1,10 @@
 package io.cjf.jcartadministrationback.dto.in;
 
 public class AdministratorUpdateProfileInDTO {
-    private Integer administratorId;
     private String realName;
     private String email;
     private String avatarUrl;
     private String password;
-
-    public Integer getAdministratorId() {
-        return administratorId;
-    }
-
-    public void setAdministratorId(Integer administratorId) {
-        this.administratorId = administratorId;
-    }
 
     public String getRealName() {
         return realName;
