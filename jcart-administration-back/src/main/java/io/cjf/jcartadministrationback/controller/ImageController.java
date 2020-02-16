@@ -18,7 +18,7 @@ import java.util.UUID;
 @RequestMapping("/image")
 public class ImageController {
 
-    private List<String> imageExts= Arrays.asList("jpg","png");
+    private List<String> imageExts= Arrays.asList("jpg","jpeg","png");
 
     @PostMapping("/upload")
     public String upload(@RequestParam MultipartFile image) throws ClientException, IOException {
@@ -26,6 +26,7 @@ public class ImageController {
         String[] splits = originalFilename.split("\\.");
         String ext = splits[splits.length - 1];
         ext = ext.toLowerCase();
+        //todo judge with content type
         boolean contains = imageExts.contains(ext);
         if (!contains){
             throw new ClientException(ClientExceptionConstant.IMAGE_INVALID_ERRCODE, ClientExceptionConstant.IMAGE_INVALID_ERRMSG);

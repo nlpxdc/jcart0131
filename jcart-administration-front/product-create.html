@@ -13,6 +13,13 @@
     <div id="app">
         <el-input v-model="productCode" placeholder="请输入商品代码"></el-input>
         <el-input v-model="productName" placeholder="请输入商品名称"></el-input>
+        <el-upload ref="upload" action="" :http-request="uploadImage" :limit="1" accept="image/*" :auto-upload="false"
+            :on-change="handleOnChange" :file-list="fileList">
+            <el-button slot="trigger" size="small" type="primary">选取图片</el-button>
+            <el-button size="small" type="success" @click="handleUploadClick">上传</el-button>
+            <div slot="tip" class="el-upload__tip">只能上传jpg/png文件</div>
+        </el-upload>
+        <el-input v-model="mainPicUrl" placeholder="请输入商品主图" readonly></el-input>
         <el-input v-model="description" type="textarea" placeholder="请输入商品描述"></el-input>
         <el-input v-model="price" placeholder="请输入价格"></el-input>
         <el-input v-model="discount" placeholder="请输入打折"></el-input>
