@@ -31,7 +31,8 @@ public class ProductServiceImpl implements ProductService {
         Product product = new Product();
         product.setProductCode(productCreateInDTO.getProductCode());
         product.setProductName(productCreateInDTO.getProductName());
-        product.setProductAbstract(productCreateInDTO.getDescription().substring(0, 100));
+        String description = productCreateInDTO.getDescription();
+        product.setProductAbstract(description.substring(0, Math.min(100, description.length())));
         product.setPrice(productCreateInDTO.getPrice());
         product.setDiscount(productCreateInDTO.getDiscount());
         product.setQuantity(productCreateInDTO.getQuantity());
@@ -56,7 +57,8 @@ public class ProductServiceImpl implements ProductService {
         product.setProductId(productUpdateInDTO.getProductId());
         product.setProductCode(productUpdateInDTO.getProductCode());
         product.setProductName(productUpdateInDTO.getProductName());
-        product.setProductAbstract(productUpdateInDTO.getDescription().substring(0, 100));
+        String description = productUpdateInDTO.getDescription();
+        product.setProductAbstract(description.substring(0, Math.min(100, description.length())));
         product.setPrice(productUpdateInDTO.getPrice());
         product.setDiscount(productUpdateInDTO.getDiscount());
         product.setQuantity(productUpdateInDTO.getQuantity());

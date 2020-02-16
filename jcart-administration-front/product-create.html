@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/elementui.css">
+    <title>product-create</title>
+</head>
+
+<body>
+    <div id="app">
+        <el-input v-model="productCode" placeholder="请输入商品代码"></el-input>
+        <el-input v-model="productName" placeholder="请输入商品名称"></el-input>
+        <el-input v-model="description" type="textarea" placeholder="请输入商品描述"></el-input>
+        <el-input v-model="price" placeholder="请输入价格"></el-input>
+        <el-input v-model="discount" placeholder="请输入打折"></el-input>
+        <el-input v-model="quantity" placeholder="请输入库存"></el-input>
+        <el-input v-model="rewordPoints" placeholder="请输入积分"></el-input>
+
+        <el-select v-model="selectedStatus" placeholder="请选择状态">
+            <el-option v-for="item in statuses" :key="item.value" :label="item.label" :value="item.value">
+            </el-option>
+        </el-select>
+        <br>
+        <br>
+
+        <el-button type="primary" @click="handleCreateClick">创建</el-button>
+
+    </div>
+
+    <script src="assets/js/axios.min.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/vue.js"></script>
+    <script src="assets/js/elementui.js"></script>
+    <script src="viewmodels/product-create.js"></script>
+
+</body>
+
+</html>
