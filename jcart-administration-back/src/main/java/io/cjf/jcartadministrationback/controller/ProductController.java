@@ -5,6 +5,7 @@ import io.cjf.jcartadministrationback.dto.in.ProductCreateInDTO;
 import io.cjf.jcartadministrationback.dto.in.ProductUpdateInDTO;
 import io.cjf.jcartadministrationback.dto.out.PageOutDTO;
 import io.cjf.jcartadministrationback.dto.out.ProductListOutDTO;
+import io.cjf.jcartadministrationback.dto.out.ProductShowOutDTO;
 import io.cjf.jcartadministrationback.po.Product;
 import io.cjf.jcartadministrationback.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,12 @@ public class ProductController {
         pageOutDTO.setPageSize(page.getPageSize());
         pageOutDTO.setPageNum(page.getPageNum());
         return pageOutDTO;
+    }
+
+    @GetMapping("/getById")
+    public ProductShowOutDTO getById(@RequestParam Integer productId){
+        ProductShowOutDTO productShowOutDTO = productService.getById(productId);
+        return productShowOutDTO;
     }
 
     @PostMapping("/create")

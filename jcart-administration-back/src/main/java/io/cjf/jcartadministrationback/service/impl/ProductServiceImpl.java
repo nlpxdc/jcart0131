@@ -8,12 +8,15 @@ import io.cjf.jcartadministrationback.dao.ProductMapper;
 import io.cjf.jcartadministrationback.dto.in.ProductCreateInDTO;
 import io.cjf.jcartadministrationback.dto.in.ProductUpdateInDTO;
 import io.cjf.jcartadministrationback.dto.out.ProductListOutDTO;
+import io.cjf.jcartadministrationback.dto.out.ProductShowOutDTO;
 import io.cjf.jcartadministrationback.po.Product;
 import io.cjf.jcartadministrationback.po.ProductDetail;
 import io.cjf.jcartadministrationback.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -79,5 +82,28 @@ public class ProductServiceImpl implements ProductService {
         PageHelper.startPage(pageNum, 10);
         Page<ProductListOutDTO> productListOutDTOS = productMapper.search();
         return productListOutDTOS;
+    }
+
+    @Override
+    public ProductShowOutDTO getById(Integer productId) {
+        Product product = productMapper.selectByPrimaryKey(productId);
+        ProductShowOutDTO productShowOutDTO = new ProductShowOutDTO();
+        productShowOutDTO.setProductId(product.getProductId());
+        productShowOutDTO.setProductCode(product.getProductCode());
+        productShowOutDTO.setProductName(product.getProductName());
+        productShowOutDTO.setMainPicUrl(product.getMainPicUrl());
+        productShowOutDTO.setPrice(product.getPrice());
+        productShowOutDTO.setDiscount(product.getDiscount());
+        productShowOutDTO.setQuantity(product.getQuantity());
+        productShowOutDTO.setStatus(product.getStatus());
+        productShowOutDTO.setRewordPoints(product.getRewordPoints());
+
+        ProductDetail productDetail = productDetailMapper.selectByPrimaryKey(productId);
+        productShowOutDTO.setDescription(productDetail.getDescription());
+        String otherPicUrlsJsonstr = productDetail.getOtherPicUrls();
+        List<String> otherPicUrls = JSON.parseArray(otherPicUrlsJsonstr, String.class);
+        productShowOutDTO.setOtherPicUrls(otherPicUrls);
+
+        return productShowOutDTO;
     }
 }
